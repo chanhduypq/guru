@@ -1,0 +1,196 @@
+.pagination {margin-top:0 !important;}
+
+#OffListing ul
+{
+margin: 0;
+padding: 0;
+list-style-type: none;
+text-align: left;
+margin:0 auto;
+}
+
+@font-face {
+    font-family: "Krono Footer Bold";
+    font-style: normal;
+    font-weight: 700;
+    src: url(fonts/krono-footer-bold.woff2) format("woff2"), url(fonts/krono-footer-bold.woff) format("woff"), url(fonts/krono-footer-bold.ttf) format("truetype")
+}
+
+@font-face {
+    font-family: "Krono Footer";
+    font-style: normal;
+    font-weight: 400;
+    src: url(fonts/krono-footer.woff2) format("woff2"), url(fonts/krono-footer.woff) format("woff"), url(fonts/krono-footer.ttf) format("truetype")
+}
+
+.container {width:100%; max-width:1170px;}
+
+.navbar-static-top .navbar-nav {margin-top:20px;}
+
+#OffListing ul li 
+{
+    display: inline;
+    text-decoration: none;
+    padding: .2em 1em;
+    //color: #fff;
+    //background-color: #036;
+}
+
+#LocSpan
+{
+    font-size: 18px;
+    font-weight: bold;
+}
+#offdisplist
+{
+    background-color: white;
+    border-style: none;
+}
+
+.slides li {padding: 0 !important;}
+
+
+.list-item {
+    text-align: center;
+    border: 5px solid #CCC;
+    padding: 10px;
+    min-height: 500px;
+    margin-bottom: 25px;
+}
+
+.list-item .img-responsive {max-height:230px; min-height: 200px; margin: 0 auto; margin-bottom: 15px;}
+
+.search-results .row > div {padding:0 1px;}
+
+.product-details .img-responsive {max-height:300px; margin: 0 auto;}
+
+@media screen and (max-width:990px) {
+    .col-sm-12 + .col-sm-12 {margin-top: 10px;}
+}
+
+div.pagination {
+padding: 0px;
+margin: 0px;
+text-align:center;
+}
+ 
+div.pagination a {
+padding: 2px 5px 2px 5px;
+margin: 2px;
+border: 1px solid #1ABC9C;
+ 
+text-decoration: none; /* no underline */
+color: #1ABC9C;
+}
+div.pagination a:hover, div.digg a:active {
+border: 1px solid #000099;
+ 
+color: #000;
+}
+div.pagination span.current {
+padding: 2px 5px 2px 5px;
+margin: 2px;
+border: 1px solid #1ABC9C;
+ 
+font-weight: bold;
+background-color: #1ABC9C;
+color: #FFF;
+}
+div.pagination span.disabled {
+padding: 2px 5px 2px 5px;
+margin: 2px;
+border: 1px solid #EEE;
+ 
+color: #DDD;
+}
+
+.parentDisable
+{
+    position:fixed;
+    top:0;
+    left:0;
+    background:rgba(0,0,0,0.8);
+    z-index:998;
+    height:100%;
+    width:100%;
+    color:#FFF;
+}
+
+.center {
+   width: 150px;
+   height: 150px;
+   position: absolute;
+   left: 50%;
+   top: 50%; 
+   margin-left: -75px;
+   margin-top: -75px;
+}
+
+.error
+{
+    border-color: rgba(255, 0, 0, 0.8);
+    box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075) inset, 0 0 8px rgba(229, 103, 23, 0.6);
+    outline: 0 none;
+}
+
+.smallfont
+{
+    font-family: arial;
+    font-size: 13px;
+}
+
+.bxslider img {max-width:90% !important; height:auto !important; max-height: 200px;}
+.owl-buttons .owl-prev, .owl-buttons .owl-next {
+    position: absolute;
+    top: 50%;
+    margin-top: -16px !important;
+    outline: 0;
+    width: 32px;
+    height: 32px;
+    text-indent: -9999px;
+    z-index: 9999;
+}
+.owl-buttons .owl-next {
+    right: -42px;
+    background: url(../images/controls.png) no-repeat -43px -32px !important;
+}		
+.owl-buttons .owl-prev {
+    left: -42px;
+    background: url(../images/controls.png) no-repeat 0 -32px !important;
+}
+
+.navbar-brand {padding: 0 !important; }
+
+.panel-body {
+    background: rgb(51, 51, 51) none repeat scroll 0% 0%;
+    color: rgb(255, 255, 255);
+}
+	.panel-body a {color:#FF0000;}
+
+.pagination .hidden-xs {display:inline-block !important;}
+
+@media screen and (max-width:767px) {
+	.input-group {width:100%;}
+	.input-group input {border-radius: 5px !important;}
+	.input-group .input-group-btn {display: block; margin-top: 15px; width: 100%; }
+	.input-group .input-group-btn .btn {border-radius:6px;}
+
+/*	.nav li span {text-align:left !important;}*/
+
+	.pagination .hidden-xs {display:none !important;}
+}
+
+@media screen and (max-width:1180px) {
+    .owl-buttons .owl-prev {left: 0px;}
+        .owl-buttons .owl-next {right: 0px;}
+/*        .owl-carousel .owl-item {text-align: center}
+            .owl-carousel .owl-item .item {padding:0 45px;}*/
+}
+
+#footer {font-family:"Krono Footer Bold", sans-serif; font-weight:700; font-size:16px;}
+	#footer h4 {font-family:"Krono Footer", sans-serif; font-weight:400}
+
+.highlight {font-size: 16px;font-weight: normal;color: #F00;}
+
+.mobile-filter-togle .glyphicon {font-size:18px; vertical-align: middle;}
+#extra-sidebar .panel {border:none; position: relative;  height: 100%;  overflow: auto; background: #333}
