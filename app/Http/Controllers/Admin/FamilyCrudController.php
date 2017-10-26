@@ -16,32 +16,44 @@ class FamilyCrudController extends CrudController {
           | BASIC CRUD INFORMATION
           |--------------------------------------------------------------------------
          */
-        $this->crud->setModel('App\Models\Family');
+
+        $url = $_SERVER['REQUEST_URI'];
+        $temp = explode('/', $url);
+        if ((count($_POST) > 0 && isset($_POST['_token'])) || strpos($url, 'create') !== false || strpos($url, 'edit') !== false || ctype_digit($temp[count($temp) - 1])) {
+            $this->crud->setModel('App\Models\Family');
+        } else {
+            $this->crud->setModel('App\Models\FamilyView');
+        }
+
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/family');
         $this->crud->setEntityNameStrings('family', 'families');
-
         /*
           |--------------------------------------------------------------------------
           | BASIC CRUD INFORMATION
           |--------------------------------------------------------------------------
          */
-
         $this->crud->setFromDb();
+
 
         // ------ CRUD FIELDS
         // $this->crud->addField($options, 'update/create/both');
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
         // $this->crud->removeField('name', 'update/create/both');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
-        $option = [// Select
-            'label' => "Brand",
-            'type' => 'select',
-            'name' => 'brandId', // the db column for the foreign key
-            'entity' => 'brand', // the method that defines the relationship in your Model
-            'attribute' => 'name', // foreign key attribute that is shown to user
-            'model' => "App\Models\Brand", // foreign key model
-        ];
-        $this->crud->addField($option, 'update/create/both')->beforeField('name'); 
+        if ((count($_POST) > 0 && isset($_POST['_token'])) || strpos($url, 'create') !== false || strpos($url, 'edit') !== false) {
+            $option = [// Select
+                'label' => "Brand",
+                'type' => 'select',
+                'name' => 'brandId', // the db column for the foreign key
+                'entity' => 'brand', // the method that defines the relationship in your Model
+                'attribute' => 'name', // foreign key attribute that is shown to user
+                'model' => "App\Models\Brand", // foreign key model
+            ];
+
+            $this->crud->addField($option, 'update/create/both')->beforeField('name');
+        }
+
+
         // ------ CRUD COLUMNS
         // $this->crud->addColumn(); // add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
@@ -49,13 +61,19 @@ class FamilyCrudController extends CrudController {
         // $this->crud->removeColumns(['column_name_1', 'column_name_2']); // remove an array of columns from the stack
         // $this->crud->setColumnDetails('column_name', ['attribute' => 'value']); // adjusts the properties of the passed in column (by name)
         // $this->crud->setColumnsDetails(['column_1', 'column_2'], ['attribute' => 'value']);
-        $this->crud->addColumn([
-            'type' => 'select',
-            'name' => 'brandId',
-            'entity' => 'brand',
-            'attribute' => 'name',
-            'model' => 'App\Models\Brand'
-        ]);
+
+        if ((count($_POST) > 0 && isset($_POST['_token'])) || strpos($url, 'create') !== false || strpos($url, 'edit') !== false) {
+            $this->crud->addColumn([
+                'type' => 'select',
+                'name' => 'brandId',
+                'entity' => 'brand',
+                'attribute' => 'name',
+                'model' => 'App\Models\Brand'
+            ]);
+        } else {
+            $this->crud->setColumnDetails('brand_name', ['label' => 'Brand']);
+        }
+
         /*  $this->crud->addColumn([
           'label' => 'Brand',
           'type' => "model_function",
@@ -89,8 +107,7 @@ class FamilyCrudController extends CrudController {
         // Please note the drawbacks of this though:
         // - 1-n and n-n columns are not searchable
         // - date and datetime columns won't be sortable anymore
-        //$this->crud->enableAjaxTable();
-
+        $this->crud->enableAjaxTable();
         // ------ DATATABLE EXPORT BUTTONS
         // Show export to PDF, CSV, XLS and Print buttons on the table view.
         // Does not work well with AJAX datatables.
